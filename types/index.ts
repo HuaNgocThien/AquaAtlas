@@ -37,7 +37,7 @@ export interface Fish {
   params: WaterParams;
   minTankLiters: number;
   maxSizeCm: number;
-  lifeSpanYears: [number, number];
+  lifespanYears: [number, number];
   diet: string;
   compatibleWith: string[]; // Array fish IDs
   incompatibleWith: string[]; // Array fish IDs
@@ -52,7 +52,7 @@ export interface Plant {
   scientific: string; // Scientific name
   difficulty: Difficulty;
   light: LightLevel;
-  requiredCo2: boolean;
+  requiresCO2: boolean;
   growthRate: PlantGrowthRate;
   placement: PlantPlacement;
   heightCm: [number, number];
