@@ -26,6 +26,7 @@ export interface WaterParams {
 
 export interface Fish {
   id: string;
+  // imageUrl?: string;
   name: string; //Vietnamese name
   nameEn: string; //English name
   scientific: string; //Scientific name
@@ -47,6 +48,7 @@ export interface Fish {
 
 export interface Plant {
   id: string;
+  // imageUrl?: string;
   name: string; // Vietnamese name
   nameEn: string; // English name
   scientific: string; // Scientific name
@@ -76,23 +78,23 @@ export type ReminderFrequency =
   | "monthly";
 
 export interface Reminder {
-    id: string;
-    tankId: string;
-    type: ReminderType;
-    label: string;
-    frequency: ReminderFrequency;
-    nextDue: string; //ISO date string
-    lastDone?: string;
-    enabled: boolean;
+  id: string;
+  tankId: string;
+  type: ReminderType;
+  label: string;
+  frequency: ReminderFrequency;
+  nextDue: string; //ISO date string
+  lastDone?: string;
+  enabled: boolean;
 }
 
-export interface Tank { 
-    id: string;
-    name: string;
-    volumeLiters: number;
-    setupDate: string; // ISO date string
-    fishIds: string[];
-    plantIds: string[];
-    reminders: Reminder[];
-    notes?: string;
+export interface Tank {
+  id: string;
+  name: string;
+  volumeLiters: number;
+  setupDate: string; // ISO date string
+  fishIds: string[];
+  plantIds: string[];
+  reminders: Reminder[];
+  notes?: string;
 }

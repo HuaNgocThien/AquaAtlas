@@ -91,11 +91,11 @@ export const CommonStyles = StyleSheet.create({
   headerTitle: {
     color: Colors.textOnDark,
     fontSize: Typography.lg,
-    fontWeight: Typography.semibold,
+    fontWeight: Typography.medium,
   },
   headerSub: {
     color: Colors.textOnDarkMuted,
-    fontSize: Typography.xs,
+    fontSize: Typography.base,
     marginBottom: 2,
   },
   sectionTitle: {
