@@ -24,7 +24,9 @@ export default function PlantCard({ plant }: PlantCardProps) {
       <View style={styles.imgBox}>
         <Image
           source={{
-            uri: "https://pos.nvncdn.com/a7f3d4-30346/ps/20230818_zVWB2Xzur8.png?v=1692346936",
+            uri:
+              plant.imageUrl ??
+              "https://i.pinimg.com/564x/04/62/f7/0462f73bfc9d24b27f6c9c800bd507af.jpg",
           }}
           style={styles.img}
           resizeMode="cover"
@@ -49,11 +51,13 @@ export default function PlantCard({ plant }: PlantCardProps) {
                   : "Sáng cao"}
             </Text>
           </View>
-          <View style={[styles.badge, { backgroundColor: Colors.sageLight }]}>
-            <Text style={[styles.badgeText, { color: Colors.textSecond }]}>
-              CO₂
-            </Text>
-          </View>
+          {!!plant.requiresCO2 && (
+            <View style={[styles.badge, { backgroundColor: Colors.sageLight }]}>
+              <Text style={[styles.badgeText, { color: Colors.textSecond }]}>
+                CO₂
+              </Text>
+            </View>
+          )}
         </View>
       </View>
     </Pressable>

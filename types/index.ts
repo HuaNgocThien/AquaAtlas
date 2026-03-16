@@ -48,7 +48,7 @@ export interface Fish {
 
 export interface Plant {
   id: string;
-  // imageUrl?: string;
+  imageUrl?: string;
   name: string; // Vietnamese name
   nameEn: string; // English name
   scientific: string; // Scientific name

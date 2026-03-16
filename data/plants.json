@@ -1,7 +1,8 @@
 [
   {
     "id": "anubias-nana",
-    "name": "Ráy Nana",
+    "imageUrl": "https://aquariumcare.vn/upload/sanpham/ray-petite-thai.jpg",
+    "name": "Ráy Nana Petite",
     "nameEn": "Dwarf Anubias",
     "scientific": "Anubias barteri var. nana",
     "difficulty": "easy",
@@ -21,6 +22,7 @@
   },
   {
     "id": "java-moss",
+    "imageUrl": "https://aquamart.vn/wp-content/uploads/2021/10/huong-dan-cach-trong-reu-java-trong-be-thuy-sinh-03.jpg",
     "name": "Rêu Java",
     "nameEn": "Java Moss",
     "scientific": "Taxiphyllum barbieri",
@@ -41,7 +43,8 @@
   },
   {
     "id": "hc-cuba",
-    "name": "HC Cuba",
+    "imageUrl": "https://bizweb.dktcdn.net/thumb/1024x1024/100/519/158/products/tran-chau-ngoc-trai-5.jpg?v=1718271104137",
+    "name": "Trân Châu Cuba",
     "nameEn": "Dwarf Baby Tears",
     "scientific": "Hemianthus callitrichoides",
     "difficulty": "hard",
@@ -61,6 +64,7 @@
   },
   {
     "id": "java-fern",
+    "imageUrl": "https://kiengla.vn/wp-content/uploads/2025/06/Duong-xi-Windelov.jpg",
     "name": "Dương Xỉ Java",
     "nameEn": "Java Fern",
     "scientific": "Microsorum pteropus",
@@ -81,7 +85,8 @@
   },
   {
     "id": "monte-carlo",
-    "name": "Monte Carlo",
+    "imageUrl": "https://bizweb.dktcdn.net/thumb/1024x1024/100/519/158/products/tran-chau-ngoc-trai-5.jpg?v=1718271104137",
+    "name": "Trân Châu Ngọc Trai",
     "nameEn": "Monte Carlo",
     "scientific": "Micranthemum tweediei",
     "difficulty": "medium",
@@ -101,6 +106,7 @@
   },
   {
     "id": "rotala-rotundifolia",
+    "imageUrl": "https://bizweb.dktcdn.net/100/344/954/files/hong-ho-diep-1-aa50a91d-5e12-42cf-9479-57e320b141e5.jpg?v=1690785119714",
     "name": "Hồng Hồ Điệp",
     "nameEn": "Rotala Rotundifolia",
     "scientific": "Rotala rotundifolia",
@@ -116,6 +122,7 @@
   },
   {
     "id": "rotala-hra",
+    "imageUrl": "https://bizweb.dktcdn.net/100/344/954/files/huyet-tam-lan-gan-trang-2-327ccde1-88f7-41e2-98a4-9e09b72bcf70.jpg?v=1690957547271",
     "name": "Hồng Huyết Tâm",
     "nameEn": "Rotala H'ra",
     "scientific": "Rotala sp. 'H'ra'",
@@ -131,7 +138,8 @@
   },
   {
     "id": "vallisneria-spiralis",
-    "name": "Cỏ Dại",
+    "name": "Hẹ Nước",
+    "imageUrl": "https://aquamart.vn/wp-content/uploads/2022/01/he-nuoc-thuy-sinh-01.jpg",
     "nameEn": "Vallisneria Spiralis",
     "scientific": "Vallisneria spiralis",
     "difficulty": "easy",
@@ -146,7 +154,8 @@
   },
   {
     "id": "cryptocoryne-wendtii",
-    "name": "Trầu Bà Nâu",
+    "imageUrl": "https://splashyfishstore.com/cdn/shop/articles/z5557407463894_8f2c8fd82887fc7aa826c55349a7c79c.jpg?v=1763454529",
+    "name": "Tiêu Thảo Nâu",
     "nameEn": "Cryptocoryne Wendtii",
     "scientific": "Cryptocoryne wendtii",
     "difficulty": "easy",
@@ -161,7 +170,8 @@
   },
   {
     "id": "hygrophila-polysperma",
-    "name": "Hồng Ba Tiêu",
+    "imageUrl": "https://bizweb.dktcdn.net/thumb/1024x1024/100/591/449/products/vay-oc-an-do-2.jpg?v=1754884239170",
+    "name": "Vảy Ốc Ấn Độ",
     "nameEn": "Hygrophila Polysperma",
     "scientific": "Hygrophila polysperma",
     "difficulty": "easy",
@@ -176,7 +186,8 @@
   },
   {
     "id": "ludwigia-super-red",
-    "name": "Ludwigia Đỏ",
+    "imageUrl": "https://cdn.dotpe.in/longtail/store-items/5573428/6S7Sl8GJ.jpeg",
+    "name": "Đại Hồng Diệp",
     "nameEn": "Ludwigia Super Red",
     "scientific": "Ludwigia sp. 'Super Red'",
     "difficulty": "medium",
@@ -191,7 +202,8 @@
   },
   {
     "id": "bacopa-monnieri",
-    "name": "Rau Má Hương",
+    "imageUrl": "https://img.lazcdn.com/g/ff/kf/Sa9742bdc03804b80a39ea6bdb2a717d8S.jpg_720x720q80.jpg",
+    "name": "Trân Châu Cao",
     "nameEn": "Bacopa Monnieri",
     "scientific": "Bacopa monnieri",
     "difficulty": "easy",
@@ -206,7 +218,8 @@
   },
   {
     "id": "eleocharis-parvula",
-    "name": "Cỏ Thìa",
+    "imageUrl": "https://m.media-amazon.com/images/I/9196K5ItesL.jpg",
+    "name": "Ngưu Mao Chiên Lùn Xoè",
     "nameEn": "Dwarf Hairgrass",
     "scientific": "Eleocharis parvula",
     "difficulty": "medium",
@@ -221,7 +234,8 @@
   },
   {
     "id": "hydrocotyle-tripartita",
-    "name": "Ngò Nhật",
+    "imageUrl": "https://vuathuysinh.com/wp-content/uploads/2023/05/rau-ma-huong-thuy-sinh.jpg",
+    "name": "Rau Má Hương",
     "nameEn": "Hydrocotyle Tripartita",
     "scientific": "Hydrocotyle tripartita",
     "difficulty": "medium",
@@ -236,7 +250,8 @@
   },
   {
     "id": "bucephalandra",
-    "name": "Buce",
+    "imageUrl": "https://bestaqua.vn/wp-content/uploads/2020/06/bucephalandra-cay-thuy-sinh-bucep.jpg",
+    "name": "Bucep",
     "nameEn": "Bucephalandra",
     "scientific": "Bucephalandra sp.",
     "difficulty": "medium",

@@ -23,7 +23,7 @@ export default function FishCard({ fish }: FishCardProps) {
       <View style={styles.imgBox}>
         <Image
           source={{
-            uri: fish.imageUrl,
+            uri: fish.imageUrl ?? "https://i.pinimg.com/564x/04/62/f7/0462f73bfc9d24b27f6c9c800bd507af.jpg",
           }}
           style={styles.img}
           resizeMode="cover"
