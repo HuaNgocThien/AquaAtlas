@@ -26,7 +26,7 @@ export interface WaterParams {
 
 export interface Fish {
   id: string;
-  // imageUrl?: string;
+  imageUrl?: string;
   name: string; //Vietnamese name
   nameEn: string; //English name
   scientific: string; //Scientific name
@@ -39,7 +39,7 @@ export interface Fish {
   minTankLiters: number;
   maxSizeCm: number;
   lifespanYears: [number, number];
-  diet: string;
+  diet: string[];
   compatibleWith: string[]; // Array fish IDs
   incompatibleWith: string[]; // Array fish IDs
   description: string;

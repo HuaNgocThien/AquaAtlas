@@ -35,6 +35,7 @@ export const Colors = {
   // Neutrals
   white: "#ffffff",
   borderLight: "#e0ecd0",
+  yellow: "#FFFF00",
 } as const;
 
 export const Spacing = {

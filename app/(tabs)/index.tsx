@@ -5,6 +5,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { use, useMemo } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import FishCard from "@/components/fish/FishCard";
+import PlantCard from "@/components/plant/PlantCard";
 
 export default function ExploreScreen() {
   const { fish, plants } = useWikiStore();
@@ -42,13 +43,12 @@ export default function ExploreScreen() {
         </View>
         {/* Temp Fish Placeholder */}
         <View style={styles.heroImgBox}>
-          {/* <Image
+          <Image
             style={styles.heroImg}
             source={{
-              uri: "https://bizweb.dktcdn.net/100/344/954/files/ca-chuot-panda-1.jpg?v=1681273103458",
+              uri: heroFish?.imageUrl,
             }}
-          /> */}
-          <Text style={{ fontSize: 40 }}>🐠</Text>
+          />
         </View>
       </View>
       {/* Stats Row */}
@@ -66,18 +66,34 @@ export default function ExploreScreen() {
           <Text style={styles.statLabel}>Cập nhật</Text>
         </View>
       </View>
-      {/* Highlighted Section */}
+      {/* Fish Highlighted Section */}
       <Text style={styles.sectionTitle}>Cá Nổi Bật</Text>
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={styles.hScroll}
-        style={{ marginBottom: Spacing.sm }}
-      >
-        {fish.map((f) => (
-          <FishCard key={f.id} fish={f} />
-        ))}
-      </ScrollView>
+      <View style={{ marginBottom: Spacing.lg }}>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.hScroll}
+        >
+          {fish.map((f) => (
+            <FishCard key={f.id} fish={f} />
+          ))}
+        </ScrollView>
+      </View>
+      {/* Plant Highlighted Section */}
+      <Text style={styles.sectionTitle}>Cây Nổi Bật</Text>
+      {/* Plant Cards */}
+      <View style={{ marginBottom: Spacing.lg }}>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.hScroll}
+        >
+          {plants.map((p) => (
+            <PlantCard key={p.id} plant={p} />
+          ))}
+        </ScrollView>
+      </View>
+
       {/* Content */}
       {/* <ScrollView
         contentContainerStyle={styles.content}
@@ -146,8 +162,8 @@ const styles = StyleSheet.create({
     fontWeight: Typography.medium,
   },
   heroImgBox: {
-    width: 72,
-    height: 72,
+    width: 120,
+    height: 120,
     backgroundColor: Colors.deepForest,
     borderRadius: 12,
     alignItems: "center",
@@ -155,8 +171,9 @@ const styles = StyleSheet.create({
     marginLeft: Spacing.md,
   },
   heroImg: {
-    width: 64,
-    height: 64,
+    width: 120,
+    height: 120,
+    borderRadius: 12,
   },
   statsRow: {
     flexDirection: "row",

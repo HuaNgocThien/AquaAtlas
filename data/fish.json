@@ -1,6 +1,7 @@
 [
   {
     "id": "betta-splendens",
+    "imageUrl": "https://thucancakoihikari.com/wp-content/uploads/2024/09/ca-betta-halfmoon-2.jpg",
     "name": "Cá Betta",
     "nameEn": "Siamese Fighting Fish",
     "scientific": "Betta splendens",
@@ -28,6 +29,7 @@
   },
   {
     "id": "neon-tetra",
+    "imageUrl": "https://bizweb.dktcdn.net/100/344/954/files/neon-xanh.jpg?v=1632300609983",
     "name": "Cá Neon",
     "nameEn": "Neon Tetra",
     "scientific": "Paracheirodon innesi",
@@ -56,13 +58,15 @@
   },
   {
     "id": "corydoras-aeneus",
+    "imageUrl": "https://bizweb.dktcdn.net/100/344/954/files/ca-chuot-cafe-2.jpg?v=1571375592851",
     "name": "Cá Chuột Cafe",
     "nameEn": "Bronze Corydoras",
     "scientific": "Corydoras aeneus",
     "family": "Callichthyidae",
     "difficulty": "easy",
     "behavior": "peaceful",
-    "grouping": "group",
+    "grouping": "school",
+    "minSchoolSize": 6,
     "params": {
       "phMin": 6.0,
       "phMax": 7.5,
@@ -83,6 +87,7 @@
   },
   {
     "id": "guppy",
+    "imageUrl": "https://vuathuysinh.com/wp-content/uploads/2023/05/ca-bay-mau-dep.jpg",
     "name": "Cá Bảy Màu",
     "nameEn": "Guppy",
     "scientific": "Poecilia reticulata",
@@ -110,6 +115,7 @@
   },
   {
     "id": "discus",
+    "imageUrl": "https://pos.nvncdn.com/a7f3d4-30346/ps/20230817_RKSmdOvJch.png?v=1692240578",
     "name": "Cá Đĩa",
     "nameEn": "Discus",
     "scientific": "Symphysodon discus",
@@ -137,6 +143,7 @@
   },
   {
     "id": "cardinal-tetra",
+    "imageUrl": "https://bizweb.dktcdn.net/100/344/954/files/ca-hong-nhung1.jpg?v=1684392832270",
     "name": "Cá Hồng Nhung",
     "nameEn": "Cardinal Tetra",
     "scientific": "Paracheirodon axelrodi",
@@ -166,6 +173,7 @@
 
   {
     "id": "rummy-nose",
+    "imageUrl": "https://chothuysinh.com/wp-content/uploads/2018/10/ca-tam-giac-do.jpg",
     "name": "Cá Tam Giác Đỏ",
     "nameEn": "Rummy Nose Tetra",
     "scientific": "Hemigrammus rhodostomus",
@@ -195,6 +203,7 @@
 
   {
     "id": "otocinclus",
+    "imageUrl": "https://bizweb.dktcdn.net/100/344/954/files/ca-otto.jpg?v=1571463084653",
     "name": "Cá Otto",
     "nameEn": "Otocinclus",
     "scientific": "Otocinclus affinis",
@@ -223,6 +232,7 @@
 
   {
     "id": "bristlenose-pleco",
+    "imageUrl": "https://thucancakoihikari.com/wp-content/uploads/2025/10/ca-pleco-2.webp",
     "name": "Cá Pleco Mũi Tua",
     "nameEn": "Bristlenose Pleco",
     "scientific": "Ancistrus sp.",
@@ -251,6 +261,7 @@
 
   {
     "id": "ramirezi",
+    "imageUrl": "https://bizweb.dktcdn.net/100/344/954/files/phuong-hoang-lam-2.jpg?v=1697868382336",
     "name": "Cá Phượng Hoàng",
     "nameEn": "German Blue Ram",
     "scientific": "Mikrogeophagus ramirezi",
@@ -279,6 +290,7 @@
 
   {
     "id": "angelfish",
+    "imageUrl": "https://bizweb.dktcdn.net/100/403/653/products/z5449628047331-befa73cf14404ce217cee038b9b258dc-1715942659310.jpg?v=1717434876143",
     "name": "Cá Thần Tiên",
     "nameEn": "Angelfish",
     "scientific": "Pterophyllum scalare",
@@ -307,6 +319,7 @@
 
   {
     "id": "molly",
+    "imageUrl": "https://thucancakoihikari.com/wp-content/uploads/2025/07/ca-molly-5.jpg",
     "name": "Cá Molly",
     "nameEn": "Molly",
     "scientific": "Poecilia sphenops",
@@ -335,6 +348,7 @@
 
   {
     "id": "platy",
+    "imageUrl": "https://bizweb.dktcdn.net/thumb/grande/100/441/675/products/platymix-1696583813495.jpg?v=1773116590903",
     "name": "Cá Platy",
     "nameEn": "Platy",
     "scientific": "Xiphophorus maculatus",
@@ -363,6 +377,7 @@
 
   {
     "id": "swordtail",
+    "imageUrl": "https://hirosaqua.com/wp-content/uploads/2024/03/ca-kiem.jpg",
     "name": "Cá Kiếm",
     "nameEn": "Swordtail",
     "scientific": "Xiphophorus hellerii",

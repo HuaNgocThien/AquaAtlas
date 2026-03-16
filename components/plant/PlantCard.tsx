@@ -1,51 +1,59 @@
 import { router } from "expo-router";
 import { View, Text, Image, Pressable, StyleSheet } from "react-native";
-import { Fish } from "@/types";
+import { Plant } from "@/types";
 import { Colors, Spacing, Typography } from "@/constants/theme";
+import { Ionicons } from "@expo/vector-icons";
 
-interface FishCardProps {
-  fish: Fish;
+interface PlantCardProps {
+  plant: Plant;
 }
 
-export default function FishCard({ fish }: FishCardProps) {
-  const difficultyColor = {
-    easy: { bg: Colors.compatOkBg, text: Colors.compatOkText },
+export default function PlantCard({ plant }: PlantCardProps) {
+  const lightColor = {
+    low: { bg: Colors.compatOkBg, text: Colors.compatOkText },
     medium: { bg: Colors.warnBg, text: Colors.warnAmber },
-    hard: { bg: Colors.dangerBg, text: Colors.dangerText },
-  }[fish.difficulty];
+    high: { bg: Colors.dangerBg, text: Colors.dangerText },
+  }[plant.light];
 
   return (
     <Pressable
       style={({ pressed }) => [styles.card, pressed && { opacity: 0.8 }]}
-      onPress={() => router.push(`/fish/${fish.id}`)}
+      onPress={() => router.push(`/plant/${plant.id}`)}
     >
-      {/* Fish Image */}
+      {/* Plant Image */}
       <View style={styles.imgBox}>
         <Image
           source={{
-            uri: fish.imageUrl,
+            uri: "https://pos.nvncdn.com/a7f3d4-30346/ps/20230818_zVWB2Xzur8.png?v=1692346936",
           }}
           style={styles.img}
           resizeMode="cover"
         />
       </View>
-      {/* Fish Info */}
+      {/* Plant Info */}
       <View style={styles.info}>
         <Text style={styles.name} numberOfLines={1}>
-          {fish.name}
+          {plant.name}
         </Text>
         <Text style={styles.sci} numberOfLines={1}>
-          {fish.scientific}
+          {plant.scientific}
         </Text>
-        {/* Difficulty Badge */}
-        <View style={[styles.badge, { backgroundColor: difficultyColor.bg }]}>
-          <Text style={[styles.badgeText, { color: difficultyColor.text }]}>
-            {fish.difficulty === "easy"
-              ? "Dễ nuôi"
-              : fish.difficulty === "medium"
-                ? "Trung bình"
-                : "Nâng Cao"}
-          </Text>
+        {/* Light Badge */}
+        <View style={styles.plantBadge}>
+          <View style={[styles.badge, { backgroundColor: lightColor.bg }]}>
+            <Text style={[styles.badgeText, { color: lightColor.text }]}>
+              {plant.light === "low"
+                ? "Sáng thấp"
+                : plant.light === "medium"
+                  ? "Sáng trung"
+                  : "Sáng cao"}
+            </Text>
+          </View>
+          <View style={[styles.badge, { backgroundColor: Colors.sageLight }]}>
+            <Text style={[styles.badgeText, { color: Colors.textSecond }]}>
+              CO₂
+            </Text>
+          </View>
         </View>
       </View>
     </Pressable>
@@ -98,5 +106,11 @@ const styles = StyleSheet.create({
   badgeText: {
     fontSize: Typography.xs,
     fontWeight: Typography.medium,
+  },
+  plantBadge: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginTop: Spacing.xs,
   },
 });
