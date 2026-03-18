@@ -68,7 +68,7 @@ export default function PlantDetailScreen() {
           {/* Tags */}
           <View style={styles.tagsRow}>
             {plant.tags.map((tag) => (
-              <View style={styles.tag}>
+              <View key={tag} style={styles.tag}>
                 <Text style={styles.tagText}>{tag}</Text>
               </View>
             ))}

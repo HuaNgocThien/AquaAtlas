@@ -67,7 +67,7 @@ export default function FishDetailScreen() {
           {/* Tags */}
           <View style={styles.tagsRow}>
             {fish.tags.map((tag) => (
-              <View style={styles.tag}>
+              <View key={tag} style={styles.tag}>
                 <Text style={styles.tagText}>{tag}</Text>
               </View>
             ))}

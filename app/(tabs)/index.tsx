@@ -1,11 +1,19 @@
 import { Colors, CommonStyles, Spacing, Typography } from "@/constants/theme";
 import { useWikiStore } from "@/store/useWikiStore";
-import { View, Text, ScrollView, StyleSheet, Image } from "react-native";
+import {
+  View,
+  Text,
+  ScrollView,
+  StyleSheet,
+  Image,
+  Pressable,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { use, useMemo } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import FishCard from "@/components/fish/FishCard";
 import PlantCard from "@/components/plant/PlantCard";
+import { router } from "expo-router";
 
 export default function ExploreScreen() {
   const { fish, plants } = useWikiStore();
@@ -24,7 +32,9 @@ export default function ExploreScreen() {
           <Text style={CommonStyles.headerTitle}>AquaAtlas</Text>
         </View>
         <View style={styles.searchIcon}>
-          <Ionicons name="search" size={24} color={Colors.textOnDarkMuted} />
+          <Pressable onPress={() => router.push("/(tabs)/search")}>
+            <Ionicons name="search" size={24} color={Colors.textOnDarkMuted} />
+          </Pressable>
         </View>
       </View>
       {/* Hero Card */}
