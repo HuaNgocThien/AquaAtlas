@@ -38,7 +38,10 @@ export default function ExploreScreen() {
         </View>
       </View>
       {/* Hero Card */}
-      <View style={styles.heroCard}>
+      <Pressable
+        style={({ pressed }) => [styles.heroCard, pressed && { opacity: 0.8 }]}
+        onPress={() => router.push(`/fish/${heroFish?.id}`)}
+      >
         <View style={styles.heroLeft}>
           <Text style={styles.heroEyebrow}>Gợi ý hôm nay !!!</Text>
           <Text style={styles.heroName}>{heroFish?.name}</Text>
@@ -60,7 +63,7 @@ export default function ExploreScreen() {
             }}
           />
         </View>
-      </View>
+      </Pressable>
       {/* Stats Row */}
       <View style={styles.statsRow}>
         <View style={styles.statChip}>
