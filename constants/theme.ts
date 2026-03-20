@@ -36,6 +36,7 @@ export const Colors = {
   white: "#ffffff",
   borderLight: "#e0ecd0",
   yellow: "#FFFF00",
+  overlay: "rgba(26, 51, 16, 0.45)",
 } as const;
 
 export const Spacing = {
