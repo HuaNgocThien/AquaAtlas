@@ -97,4 +97,15 @@ export interface Tank {
   plantIds: string[];
   reminders: Reminder[];
   notes?: string;
+  readings: TankReading[];
+}
+
+export interface TankReading {
+  id: string;
+  date: string; // ISO date string
+  ph?: number;
+  temperature?: number;
+  gh?: number;
+  no3?: number;
+  notes?: string;
 }

@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Tank, Reminder } from "@/types";
+import { Tank, Reminder, TankReading } from "@/types";
 
 function uid(): string {
   return Math.random().toString(36).slice(2, 10);
@@ -33,6 +33,11 @@ interface TankState {
   ) => void;
   markReminderDone: (tankId: string, reminderId: string) => void;
   deleteReminder: (tankId: string, reminderId: string) => void;
+  addReading: (
+    tankId: string,
+    reading: Omit<TankReading, "id" | "date">,
+  ) => void;
+  deleteReading: (tankId: string, readingId: string) => void;
 }
 
 export const useTankStore = create<TankState>()(
@@ -49,6 +54,7 @@ export const useTankStore = create<TankState>()(
           fishIds: [],
           plantIds: [],
           reminders: [],
+          readings: [],
         };
         set((s) => ({ tanks: [...s.tanks, tank] }));
       },
@@ -108,10 +114,40 @@ export const useTankStore = create<TankState>()(
           ),
         }));
       },
+      addReading: (tankId, data) => {
+        const reading: TankReading = {
+          ...data,
+          id: uid(),
+          date: new Date().toISOString(),
+        };
+        set((s) => ({
+          tanks: s.tanks.map((t) =>
+            t.id === tankId ? { ...t, readings: [reading, ...t.readings] } : t,
+          ),
+        }));
+      },
+
+      deleteReading: (tankId, readingId) => {
+        set((s) => ({
+          tanks: s.tanks.map((t) =>
+            t.id === tankId
+              ? { ...t, readings: t.readings.filter((r) => r.id !== readingId) }
+              : t,
+          ),
+        }));
+      },
     }),
     {
       name: "tank-storage",
       storage: createJSONStorage(() => AsyncStorage),
+      onRehydrateStorage: () => (state) => {
+        if (state) {
+          state.tanks = state.tanks.map((t) => ({
+            ...t,
+            readings: t.readings ?? [],
+          }));
+        }
+      },
     },
   ),
 );

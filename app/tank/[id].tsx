@@ -17,10 +17,48 @@ import { useTankStore } from "@/store/useTankStore";
 import { Colors, Spacing, Typography, CommonStyles } from "@/constants/theme";
 import { Reminder, ReminderType, ReminderFrequency } from "@/types";
 
+function ParamBadge({
+  label,
+  value,
+  min,
+  max,
+}: {
+  label: string;
+  value: number;
+  min: number;
+  max: number;
+}) {
+  const isOk = value >= min && value <= max;
+  const isWarn = !isOk && value >= min * 0.9 && value <= max * 1.1;
+
+  const bg = isOk
+    ? Colors.compatOkBg
+    : isWarn
+      ? Colors.warnBg
+      : Colors.dangerBg;
+  const text = isOk
+    ? Colors.compatOkText
+    : isWarn
+      ? Colors.warnAmber
+      : Colors.dangerText;
+
+  return (
+    <View style={[styles.paramBadge, { backgroundColor: bg }]}>
+      <Text style={[styles.paramBadgeVal, { color: text }]}>{value}</Text>
+      <Text style={[styles.paramBadgeLbl, { color: text }]}>{label}</Text>
+    </View>
+  );
+}
 export default function TankDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
-  const { getTankById, addReminder, markReminderDone, deleteReminder } =
-    useTankStore();
+  const {
+    getTankById,
+    addReminder,
+    markReminderDone,
+    deleteReminder,
+    addReading,
+    deleteReading,
+  } = useTankStore();
   const tank = getTankById(id);
 
   const [modalVisible, setModalVisible] = useState(false);
@@ -28,6 +66,11 @@ export default function TankDetailScreen() {
   const [reminderType, setReminderType] =
     useState<ReminderType>("water-change");
   const [reminderFreq, setReminderFreq] = useState<ReminderFrequency>("weekly");
+  const [readingModal, setReadingModal] = useState(false);
+  const [ph, setPh] = useState("");
+  const [temperature, setTemperature] = useState("");
+  const [gh, setGh] = useState("");
+  const [no3, setNo3] = useState("");
 
   if (!tank) {
     return (
@@ -49,6 +92,22 @@ export default function TankDetailScreen() {
     });
     setReminderLabel("");
     setModalVisible(false);
+  };
+
+  const handleAddReading = () => {
+    if (!ph && !temperature && !gh && !no3) return;
+
+    addReading(tank.id, {
+      ph: ph ? Number(ph) : undefined,
+      temperature: temperature ? Number(temperature) : undefined,
+      gh: gh ? Number(gh) : undefined,
+      no3: no3 ? Number(no3) : undefined,
+    });
+    setPh("");
+    setTemperature("");
+    setGh("");
+    setNo3("");
+    setReadingModal(false);
   };
   function formatDueLabel(nextDue: string): { label: string; color: string } {
     const now = new Date();
@@ -161,10 +220,11 @@ export default function TankDetailScreen() {
                     </Pressable>
                     <Pressable
                       onPress={() => deleteReminder(tank.id, reminder.id)}
+                      style={{ marginTop: Spacing.xs }}
                     >
                       <Ionicons
                         name="trash-outline"
-                        size={16}
+                        size={18}
                         color={Colors.dangerRed}
                       />
                     </Pressable>
@@ -172,6 +232,73 @@ export default function TankDetailScreen() {
                 </View>
               );
             })
+          )}
+        </View>
+        {/* Water Params Section */}
+        <View style={[styles.section, { marginTop: Spacing.lg }]}>
+          <View style={styles.sectionHeader}>
+            <Text style={styles.sectionTitle}>Thông số nước</Text>
+            <Pressable
+              style={styles.addReminderBtn}
+              onPress={() => setReadingModal(true)}
+            >
+              <Ionicons name="add" size={18} color={Colors.white} />
+              <Text style={styles.addReminderText}>Ghi</Text>
+            </Pressable>
+          </View>
+
+          {tank.readings.length === 0 ? (
+            <View style={styles.emptyReminder}>
+              <Text style={styles.emptyReminderText}>
+                Chưa có dữ liệu thông số
+              </Text>
+            </View>
+          ) : (
+            tank.readings.slice(0, 5).map((reading) => (
+              <View key={reading.id} style={styles.readingCard}>
+                <View style={styles.readingHeader}>
+                  <Text style={styles.readingDate}>
+                    {new Date(reading.date).toLocaleDateString("vi-VN")}
+                  </Text>
+                  <Pressable onPress={() => deleteReading(tank.id, reading.id)}>
+                    <Ionicons
+                      name="trash-outline"
+                      size={18}
+                      color={Colors.dangerRed}
+                    />
+                  </Pressable>
+                </View>
+                <View style={styles.readingParams}>
+                  {reading.ph !== undefined && (
+                    <ParamBadge label="pH" value={reading.ph} min={6} max={8} />
+                  )}
+                  {reading.temperature !== undefined && (
+                    <ParamBadge
+                      label="°C"
+                      value={reading.temperature}
+                      min={22}
+                      max={30}
+                    />
+                  )}
+                  {reading.gh !== undefined && (
+                    <ParamBadge
+                      label="GH"
+                      value={reading.gh}
+                      min={4}
+                      max={16}
+                    />
+                  )}
+                  {reading.no3 !== undefined && (
+                    <ParamBadge
+                      label="NO₃"
+                      value={reading.no3}
+                      min={0}
+                      max={20}
+                    />
+                  )}
+                </View>
+              </View>
+            ))
           )}
         </View>
       </ScrollView>
@@ -287,6 +414,93 @@ export default function TankDetailScreen() {
                 onPress={handleAddReminder}
               >
                 <Text style={styles.confirmText}>Thêm</Text>
+              </Pressable>
+            </View>
+          </View>
+        </KeyboardAvoidingView>
+      </Modal>
+      <Modal
+        visible={readingModal}
+        transparent
+        animationType="slide"
+        onRequestClose={() => setReadingModal(false)}
+      >
+        <KeyboardAvoidingView
+          behavior={Platform.OS === "ios" ? "padding" : "height"}
+          style={styles.modalOverlay}
+        >
+          <View style={styles.modalCard}>
+            <Text style={styles.modalTitle}>Ghi thông số nước</Text>
+
+            <View style={styles.paramInputRow}>
+              <View style={styles.paramInputWrap}>
+                <Text style={styles.inputLabel}>pH</Text>
+                <TextInput
+                  style={styles.paramInput}
+                  placeholder="6.8"
+                  placeholderTextColor={Colors.textMuted}
+                  value={ph}
+                  onChangeText={setPh}
+                  keyboardType="decimal-pad"
+                />
+              </View>
+              <View style={styles.paramInputWrap}>
+                <Text style={styles.inputLabel}>Nhiệt độ (°C)</Text>
+                <TextInput
+                  style={styles.paramInput}
+                  placeholder="26"
+                  placeholderTextColor={Colors.textMuted}
+                  value={temperature}
+                  onChangeText={setTemperature}
+                  keyboardType="decimal-pad"
+                />
+              </View>
+            </View>
+
+            <View style={styles.paramInputRow}>
+              <View style={styles.paramInputWrap}>
+                <Text style={styles.inputLabel}>GH (dGH)</Text>
+                <TextInput
+                  style={styles.paramInput}
+                  placeholder="8"
+                  placeholderTextColor={Colors.textMuted}
+                  value={gh}
+                  onChangeText={setGh}
+                  keyboardType="decimal-pad"
+                />
+              </View>
+              <View style={styles.paramInputWrap}>
+                <Text style={styles.inputLabel}>NO₃ (ppm)</Text>
+                <TextInput
+                  style={styles.paramInput}
+                  placeholder="10"
+                  placeholderTextColor={Colors.textMuted}
+                  value={no3}
+                  onChangeText={setNo3}
+                  keyboardType="decimal-pad"
+                />
+              </View>
+            </View>
+
+            <View style={styles.modalBtns}>
+              <Pressable
+                style={styles.cancelBtn}
+                onPress={() => setReadingModal(false)}
+              >
+                <Text style={styles.cancelText}>Huỷ</Text>
+              </Pressable>
+              <Pressable
+                style={[
+                  styles.confirmBtn,
+                  !ph &&
+                    !temperature &&
+                    !gh &&
+                    !no3 &&
+                    styles.confirmBtnDisabled,
+                ]}
+                onPress={handleAddReading}
+              >
+                <Text style={styles.confirmText}>Lưu</Text>
               </Pressable>
             </View>
           </View>
@@ -501,5 +715,60 @@ const styles = StyleSheet.create({
     fontSize: Typography.base,
     color: Colors.white,
     fontWeight: Typography.medium,
+  },
+  readingCard: {
+    backgroundColor: Colors.white,
+    borderRadius: 12,
+    borderWidth: 0.5,
+    borderColor: Colors.sageDark,
+    padding: Spacing.md,
+    marginBottom: Spacing.sm,
+  },
+  readingHeader: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: Spacing.sm,
+  },
+  readingDate: {
+    fontSize: Typography.base,
+    fontWeight: Typography.medium,
+    color: Colors.textSecond,
+  },
+  readingParams: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: Spacing.xs,
+  },
+  paramBadge: {
+    paddingHorizontal: Spacing.sm,
+    paddingVertical: Spacing.xs,
+    borderRadius: 8,
+    alignItems: "center",
+    minWidth: 52,
+  },
+  paramBadgeVal: {
+    fontSize: Typography.base,
+    fontWeight: Typography.semibold,
+  },
+  paramBadgeLbl: {
+    fontSize: 9,
+    marginTop: 1,
+  },
+  paramInputRow: {
+    flexDirection: "row",
+    gap: Spacing.sm,
+    marginBottom: Spacing.sm,
+  },
+  paramInputWrap: {
+    flex: 1,
+  },
+  paramInput: {
+    backgroundColor: Colors.sageLight,
+    borderRadius: 10,
+    padding: Spacing.md,
+    fontSize: Typography.base,
+    color: Colors.textPrimary,
+    marginTop: Spacing.xs,
   },
 });
