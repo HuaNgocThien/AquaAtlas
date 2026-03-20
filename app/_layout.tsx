@@ -14,7 +14,7 @@ export default function RootLayout() {
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <StatusBar style="light"/>
+      <StatusBar style="light" />
       <Stack screenOptions={{ headerShown: false }}>
         <Stack.Screen name="(tabs)" />
         <Stack.Screen
@@ -23,6 +23,10 @@ export default function RootLayout() {
         />
         <Stack.Screen
           name="plant/[id]"
+          options={{ animation: "slide_from_right" }}
+        />
+        <Stack.Screen
+          name="tank/[id]"
           options={{ animation: "slide_from_right" }}
         />
       </Stack>

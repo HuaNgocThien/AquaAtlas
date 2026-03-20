@@ -65,7 +65,7 @@ export interface Plant {
 
 export type ReminderType =
   | "water-change"
-  | "fertilizer"
+  | "fertilize"
   | "params-check"
   | "filter-clean"
   | "custom";

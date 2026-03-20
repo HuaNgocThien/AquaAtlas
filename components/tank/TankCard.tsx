@@ -17,6 +17,11 @@ import { useTankStore } from "@/store/useTankStore";
 import { Colors, Spacing, Typography, CommonStyles } from "@/constants/theme";
 import { Tank } from "@/types";
 
+interface TankCardProps {
+  tank: Tank;
+  onDelete: () => void;
+}
+
 export default function TankCard({
   tank,
   onDelete,
@@ -31,39 +36,46 @@ export default function TankCard({
 
   return (
     <View style={styles.tankCard}>
-      <View style={styles.tankHeader}>
-        <View>
-          <Text style={styles.tankName}>{tank.name}</Text>
-          <Text style={styles.tankAge}>
-            {tank.volumeLiters}L · Setup{" "}
-            {setupDays === 0 ? "Hôm Nay" : `${setupDays} ngày trước`}
-          </Text>
-        </View>
+      <View style={styles.tankHeaderRow}>
+        <Pressable
+          style={({ pressed }) => [pressed && { opacity: 0.9 }]}
+          onPress={() => router.push(`/tank/${tank.id}`)}
+        >
+          <View style={styles.tankHeader}>
+            <View>
+              <Text style={styles.tankName}>{tank.name}</Text>
+              <Text style={styles.tankAge}>
+                {tank.volumeLiters}L · Setup{" "}
+                {setupDays === 0 ? "Hôm Nay" : `${setupDays} ngày trước`}
+              </Text>
+            </View>
+          </View>
+
+          {/* Tank Visual */}
+          <View style={styles.tankViz}>
+            <View style={styles.waterBody}></View>
+            <View style={styles.gravel}></View>
+          </View>
+
+          {/*Stats*/}
+          <View style={styles.tankStats}>
+            <View style={styles.tankStat}>
+              <Text style={styles.tankStatVal}>{tank.fishIds.length}</Text>
+              <Text style={styles.tankStatLbl}>Loại Cá</Text>
+            </View>
+            <View style={styles.tankStat}>
+              <Text style={styles.tankStatVal}>{tank.plantIds.length}</Text>
+              <Text style={styles.tankStatLbl}>Loại Cây</Text>
+            </View>
+            <View style={styles.tankStat}>
+              <Text style={styles.tankStatVal}>{tank.reminders.length}</Text>
+              <Text style={styles.tankStatLbl}>Nhắc Nhở</Text>
+            </View>
+          </View>
+        </Pressable>
         <Pressable style={styles.deleteBtn} onPress={onDelete}>
           <Ionicons name="trash-outline" size={20} color={Colors.dangerRed} />
         </Pressable>
-      </View>
-
-      {/* Tank Visual */}
-      <View style={styles.tankViz}>
-        <View style={styles.waterBody}></View>
-        <View style={styles.gravel}></View>
-      </View>
-
-      {/*Stats*/}
-      <View style={styles.tankStats}>
-        <View style={styles.tankStat}>
-          <Text style={styles.tankStatVal}>{tank.fishIds.length}</Text>
-          <Text style={styles.tankStatLbl}>Loại Cá</Text>
-        </View>
-        <View style={styles.tankStat}>
-          <Text style={styles.tankStatVal}>{tank.plantIds.length}</Text>
-          <Text style={styles.tankStatLbl}>Loại Cây</Text>
-        </View>
-        <View style={styles.tankStat}>
-          <Text style={styles.tankStatVal}>{tank.reminders.length}</Text>
-          <Text style={styles.tankStatLbl}>Nhắc Nhở</Text>
-        </View>
       </View>
     </View>
   );
@@ -85,6 +97,9 @@ const styles = StyleSheet.create({
     padding: Spacing.md,
     paddingBottom: Spacing.sm,
   },
+  tankHeaderRow: {
+    position: "relative",
+  },
   tankName: {
     fontSize: Typography.md,
     fontWeight: Typography.semibold,
@@ -96,7 +111,11 @@ const styles = StyleSheet.create({
     marginTop: 2,
   },
   deleteBtn: {
+    position: "absolute",
+    top: Spacing.md,
+    right: Spacing.md,
     padding: Spacing.xs,
+    zIndex: 1,
   },
   tankViz: {
     height: 80,
