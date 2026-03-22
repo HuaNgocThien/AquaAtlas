@@ -29,6 +29,14 @@ export default function RootLayout() {
           name="tank/[id]"
           options={{ animation: "slide_from_right" }}
         />
+        <Stack.Screen
+          name="auth/login"
+          options={{ animation: "slide_from_bottom" }}
+        />
+        <Stack.Screen
+          name="auth/register"
+          options={{ animation: "slide_from_right" }}
+        />
       </Stack>
     </GestureHandlerRootView>
   );

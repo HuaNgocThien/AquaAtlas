@@ -21,13 +21,13 @@
         "backgroundColor": "#1a3310",
         "foregroundImage": "./assets/android-icon-foreground.png"
       },
+      "package": "com.huadev.aquaatlas",
       "predictiveBackGestureEnabled": false
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": ["expo-router", "expo-font"],
-
     "experiments": {
       "typeRoutes": true
     }

@@ -14,6 +14,7 @@ import { Ionicons } from "@expo/vector-icons";
 import FishCard from "@/components/fish/FishCard";
 import PlantCard from "@/components/plant/PlantCard";
 import { router } from "expo-router";
+import { useAuthStore } from "@/store/useAuthStore";
 
 export default function ExploreScreen() {
   const { fish, plants } = useWikiStore();
@@ -22,13 +23,15 @@ export default function ExploreScreen() {
     const index = Math.floor(Math.random() * fish.length);
     return fish[index];
   }, [fish]);
-
+  const { user } = useAuthStore();
   return (
     <SafeAreaView style={CommonStyles.screen} edges={["top"]}>
       {/* Header */}
       <View style={CommonStyles.header}>
         <View>
-          <Text style={CommonStyles.headerSub}>Xin chào, Genji</Text>
+          <Text style={CommonStyles.headerSub}>
+            Xin chào, {user?.displayName ?? "Bạn mới"} 👋
+          </Text>
           <Text style={CommonStyles.headerTitle}>AquaAtlas</Text>
         </View>
         <View style={styles.searchIcon}>
