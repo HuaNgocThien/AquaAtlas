@@ -19,7 +19,7 @@
     "android": {
       "adaptiveIcon": {
         "backgroundColor": "#1a3310",
-        "foregroundImage": "./assets/android-icon-foreground.png"
+        "foregroundImage": "./assets/icon.png"
       },
       "package": "com.huadev.aquaatlas",
       "predictiveBackGestureEnabled": false
