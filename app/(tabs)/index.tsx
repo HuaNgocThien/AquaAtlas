@@ -15,6 +15,7 @@ import FishCard from "@/components/fish/FishCard";
 import PlantCard from "@/components/plant/PlantCard";
 import { router } from "expo-router";
 import { useAuthStore } from "@/store/useAuthStore";
+import { getRandomItems } from "@/utils/array";
 
 export default function ExploreScreen() {
   const { fish, plants } = useWikiStore();
@@ -24,6 +25,9 @@ export default function ExploreScreen() {
     return fish[index];
   }, [fish]);
   const { user } = useAuthStore();
+  const randomFish = useMemo(() => getRandomItems(fish, 6), [fish]);
+  const randomPlants = useMemo(() => getRandomItems(plants, 6), [plants]);
+
   return (
     <SafeAreaView style={CommonStyles.screen} edges={["top"]}>
       {/* Header */}
@@ -90,7 +94,7 @@ export default function ExploreScreen() {
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={styles.hScroll}
         >
-          {fish.map((f) => (
+          {randomFish.map((f) => (
             <FishCard key={f.id} fish={f} />
           ))}
         </ScrollView>
@@ -104,7 +108,7 @@ export default function ExploreScreen() {
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={styles.hScroll}
         >
-          {plants.map((p) => (
+          {randomPlants.map((p) => (
             <PlantCard key={p.id} plant={p} />
           ))}
         </ScrollView>
