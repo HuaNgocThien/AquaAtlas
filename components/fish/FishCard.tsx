@@ -3,14 +3,14 @@ import { View, Text, Image, Pressable, StyleSheet } from "react-native";
 import { Fish } from "@/types";
 import { Colors, Spacing, Typography } from "@/constants/theme";
 import Animated from "react-native-reanimated";
-import { useAnimatedPress } from "@/hooks/useAnimatedPress";
+import { useCardAnimation } from "@/hooks/useCardAnimation";
 
 interface FishCardProps {
   fish: Fish;
 }
 
 export default function FishCard({ fish }: FishCardProps) {
-  const { animatedStyle, onPressIn, onPressOut } = useAnimatedPress();
+  const { animatedStyle, onPressIn, onPressOut } = useCardAnimation();
   const difficultyColor = {
     easy: { bg: Colors.compatOkBg, text: Colors.compatOkText },
     medium: { bg: Colors.warnBg, text: Colors.warnAmber },

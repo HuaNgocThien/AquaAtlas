@@ -16,6 +16,8 @@ import { Ionicons } from "@expo/vector-icons";
 import { useTankStore } from "@/store/useTankStore";
 import { Colors, Spacing, Typography, CommonStyles } from "@/constants/theme";
 import { Tank } from "@/types";
+import Animated from "react-native-reanimated";
+import { useCardAnimation } from "@/hooks/useCardAnimation";
 
 interface TankCardProps {
   tank: Tank;
@@ -29,16 +31,19 @@ export default function TankCard({
   tank: Tank;
   onDelete: () => void;
 }) {
+  const { animatedStyle, onPressIn, onPressOut } = useCardAnimation();
   //Calculate setup days
   const setupDays = Math.floor(
     (Date.now() - new Date(tank.setupDate).getTime()) / (1000 * 60 * 60 * 24),
   );
 
   return (
-    <View style={styles.tankCard}>
+    <Animated.View style={[styles.tankCard, animatedStyle]}>
       <View style={styles.tankHeaderRow}>
         <Pressable
           style={({ pressed }) => [pressed && { opacity: 0.9 }]}
+          onPressIn={onPressIn}
+          onPressOut={onPressOut}
           onPress={() => router.push(`/tank/${tank.id}`)}
         >
           <View style={styles.tankHeader}>
@@ -77,7 +82,7 @@ export default function TankCard({
           <Ionicons name="trash-outline" size={20} color={Colors.dangerRed} />
         </Pressable>
       </View>
-    </View>
+    </Animated.View>
   );
 }
 

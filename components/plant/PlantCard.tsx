@@ -3,12 +3,15 @@ import { View, Text, Image, Pressable, StyleSheet } from "react-native";
 import { Plant } from "@/types";
 import { Colors, Spacing, Typography } from "@/constants/theme";
 import { Ionicons } from "@expo/vector-icons";
+import Animated from "react-native-reanimated";
+import { useCardAnimation } from "@/hooks/useCardAnimation";
 
 interface PlantCardProps {
   plant: Plant;
 }
 
 export default function PlantCard({ plant }: PlantCardProps) {
+  const { animatedStyle, onPressIn, onPressOut } = useCardAnimation();
   const lightColor = {
     low: { bg: Colors.compatOkBg, text: Colors.compatOkText },
     medium: { bg: Colors.warnBg, text: Colors.warnAmber },
@@ -16,51 +19,57 @@ export default function PlantCard({ plant }: PlantCardProps) {
   }[plant.light];
 
   return (
-    <Pressable
-      style={({ pressed }) => [styles.card, pressed && { opacity: 0.8 }]}
-      onPress={() => router.push(`/plant/${plant.id}`)}
-    >
-      {/* Plant Image */}
-      <View style={styles.imgBox}>
-        <Image
-          source={{
-            uri:
-              plant.imageUrl ??
-              "https://i.pinimg.com/564x/04/62/f7/0462f73bfc9d24b27f6c9c800bd507af.jpg",
-          }}
-          style={styles.img}
-          resizeMode="cover"
-        />
-      </View>
-      {/* Plant Info */}
-      <View style={styles.info}>
-        <Text style={styles.name} numberOfLines={1}>
-          {plant.name}
-        </Text>
-        <Text style={styles.sci} numberOfLines={1}>
-          {plant.scientific}
-        </Text>
-        {/* Light Badge */}
-        <View style={styles.plantBadge}>
-          <View style={[styles.badge, { backgroundColor: lightColor.bg }]}>
-            <Text style={[styles.badgeText, { color: lightColor.text }]}>
-              {plant.light === "low"
-                ? "Sáng thấp"
-                : plant.light === "medium"
-                  ? "Sáng trung"
-                  : "Sáng cao"}
-            </Text>
-          </View>
-          {!!plant.requiresCO2 && (
-            <View style={[styles.badge, { backgroundColor: Colors.sageLight }]}>
-              <Text style={[styles.badgeText, { color: Colors.textSecond }]}>
-                CO₂
+    <Animated.View style={[animatedStyle]}>
+      <Pressable
+        style={({ pressed }) => [styles.card, pressed && { opacity: 0.8 }]}
+        onPress={() => router.push(`/plant/${plant.id}`)}
+        onPressIn={onPressIn}
+        onPressOut={onPressOut}
+      >
+        {/* Plant Image */}
+        <View style={styles.imgBox}>
+          <Image
+            source={{
+              uri:
+                plant.imageUrl ??
+                "https://i.pinimg.com/564x/04/62/f7/0462f73bfc9d24b27f6c9c800bd507af.jpg",
+            }}
+            style={styles.img}
+            resizeMode="cover"
+          />
+        </View>
+        {/* Plant Info */}
+        <View style={styles.info}>
+          <Text style={styles.name} numberOfLines={1}>
+            {plant.name}
+          </Text>
+          <Text style={styles.sci} numberOfLines={1}>
+            {plant.scientific}
+          </Text>
+          {/* Light Badge */}
+          <View style={styles.plantBadge}>
+            <View style={[styles.badge, { backgroundColor: lightColor.bg }]}>
+              <Text style={[styles.badgeText, { color: lightColor.text }]}>
+                {plant.light === "low"
+                  ? "Sáng thấp"
+                  : plant.light === "medium"
+                    ? "Sáng trung"
+                    : "Sáng cao"}
               </Text>
             </View>
-          )}
+            {!!plant.requiresCO2 && (
+              <View
+                style={[styles.badge, { backgroundColor: Colors.sageLight }]}
+              >
+                <Text style={[styles.badgeText, { color: Colors.textSecond }]}>
+                  CO₂
+                </Text>
+              </View>
+            )}
+          </View>
         </View>
-      </View>
-    </Pressable>
+      </Pressable>
+    </Animated.View>
   );
 }
 
