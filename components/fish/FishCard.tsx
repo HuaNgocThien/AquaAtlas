@@ -2,12 +2,15 @@ import { router } from "expo-router";
 import { View, Text, Image, Pressable, StyleSheet } from "react-native";
 import { Fish } from "@/types";
 import { Colors, Spacing, Typography } from "@/constants/theme";
+import Animated from "react-native-reanimated";
+import { useAnimatedPress } from "@/hooks/useAnimatedPress";
 
 interface FishCardProps {
   fish: Fish;
 }
 
 export default function FishCard({ fish }: FishCardProps) {
+  const { animatedStyle, onPressIn, onPressOut } = useAnimatedPress();
   const difficultyColor = {
     easy: { bg: Colors.compatOkBg, text: Colors.compatOkText },
     medium: { bg: Colors.warnBg, text: Colors.warnAmber },
@@ -15,40 +18,44 @@ export default function FishCard({ fish }: FishCardProps) {
   }[fish.difficulty];
 
   return (
-    <Pressable
-      style={({ pressed }) => [styles.card, pressed && { opacity: 0.8 }]}
-      onPress={() => router.push(`/fish/${fish.id}`)}
-    >
-      {/* Fish Image */}
-      <View style={styles.imgBox}>
-        <Image
-          source={{
-            uri: fish.imageUrl ?? "https://i.pinimg.com/564x/04/62/f7/0462f73bfc9d24b27f6c9c800bd507af.jpg",
-          }}
-          style={styles.img}
-          resizeMode="cover"
-        />
-      </View>
-      {/* Fish Info */}
-      <View style={styles.info}>
-        <Text style={styles.name} numberOfLines={1}>
-          {fish.name}
-        </Text>
-        <Text style={styles.sci} numberOfLines={1}>
-          {fish.scientific}
-        </Text>
-        {/* Difficulty Badge */}
-        <View style={[styles.badge, { backgroundColor: difficultyColor.bg }]}>
-          <Text style={[styles.badgeText, { color: difficultyColor.text }]}>
-            {fish.difficulty === "easy"
-              ? "Dễ nuôi"
-              : fish.difficulty === "medium"
-                ? "Trung bình"
-                : "Nâng Cao"}
-          </Text>
+    <Animated.View style={[animatedStyle]}>
+      <Pressable
+        style={({ pressed }) => [styles.card, pressed && { opacity: 0.8 }]}
+        onPress={() => router.push(`/fish/${fish.id}`)}
+      >
+        {/* Fish Image */}
+        <View style={styles.imgBox}>
+          <Image
+            source={{
+              uri:
+                fish.imageUrl ??
+                "https://i.pinimg.com/564x/04/62/f7/0462f73bfc9d24b27f6c9c800bd507af.jpg",
+            }}
+            style={styles.img}
+            resizeMode="cover"
+          />
         </View>
-      </View>
-    </Pressable>
+        {/* Fish Info */}
+        <View style={styles.info}>
+          <Text style={styles.name} numberOfLines={1}>
+            {fish.name}
+          </Text>
+          <Text style={styles.sci} numberOfLines={1}>
+            {fish.scientific}
+          </Text>
+          {/* Difficulty Badge */}
+          <View style={[styles.badge, { backgroundColor: difficultyColor.bg }]}>
+            <Text style={[styles.badgeText, { color: difficultyColor.text }]}>
+              {fish.difficulty === "easy"
+                ? "Dễ nuôi"
+                : fish.difficulty === "medium"
+                  ? "Trung bình"
+                  : "Nâng Cao"}
+            </Text>
+          </View>
+        </View>
+      </Pressable>
+    </Animated.View>
   );
 }
 
