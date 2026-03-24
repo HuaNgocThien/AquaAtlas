@@ -21,6 +21,8 @@ export default function FishCard({ fish }: FishCardProps) {
     <Animated.View style={[animatedStyle]}>
       <Pressable
         style={({ pressed }) => [styles.card, pressed && { opacity: 0.8 }]}
+        onPressIn={onPressIn}
+        onPressOut={onPressOut}
         onPress={() => router.push(`/fish/${fish.id}`)}
       >
         {/* Fish Image */}
