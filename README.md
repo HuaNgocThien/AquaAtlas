@@ -6,10 +6,12 @@ A mobile aquarium reference app (fish, plants, tanks) built with Expo + React Na
 ## 1) Giới thiệu | Overview
 
 **VI**
+
 - AquaAtlas giúp người dùng tra cứu thông tin cá và cây thủy sinh, lưu mục yêu thích và quản lý bể cá cá nhân.
 - Dự án dùng kiến trúc tách lớp theo `app` (routing), `components` (UI), `store` (state), `services` (API), `data` (static JSON).
 
 **EN**
+
 - AquaAtlas helps users browse fish and aquatic plants, save bookmarks, and manage personal tanks.
 - The codebase follows a layered structure with `app` (routing), `components` (UI), `store` (state), `services` (API), and `data` (static JSON).
 
@@ -50,12 +52,14 @@ aquaatlas/
 ## 4) Yêu cầu môi trường | Requirements
 
 **VI**
+
 - Node.js LTS (khuyến nghị >= 18)
 - npm
 - Expo CLI (thông qua `npx expo ...`)
 - Android Studio / Xcode (nếu chạy giả lập native)
 
 **EN**
+
 - Node.js LTS (recommended >= 18)
 - npm
 - Expo CLI (via `npx expo ...`)
@@ -87,11 +91,13 @@ npm run web
 ## 6) Build với EAS | EAS Build
 
 **VI**
+
 - `eas.json` có 2 profile:
   - `preview`: build APK nội bộ (`distribution: internal`)
   - `production`: build Android App Bundle (`.aab`)
 
 **EN**
+
 - `eas.json` includes 2 profiles:
   - `preview`: internal APK build
   - `production`: Android App Bundle (`.aab`) build
@@ -105,10 +111,12 @@ eas build --platform android --profile preview
 ## 7) Kiểm thử | Testing
 
 **VI**
+
 - Dự án đã có test cho `store`, `services`, và `utils`.
 - Chạy test bằng:
 
 **EN**
+
 - The project already includes tests for `store`, `services`, and `utils`.
 - Run tests with:
 
@@ -118,17 +126,19 @@ npx jest
 
 ## 8) Biến môi trường | Environment Variables
 
-| Variable | Required | Description |
-|---|---|---|
-| `EXPO_PUBLIC_FIREBASE_API_KEY` | Yes | Firebase Web API key used by auth service |
+| Variable                       | Required | Description                               |
+| ------------------------------ | -------- | ----------------------------------------- |
+| `EXPO_PUBLIC_FIREBASE_API_KEY` | Yes      | Firebase Web API key used by auth service |
 
 ## 9) Ghi chú bảo mật | Security Notes
 
 **VI**
+
 - Không commit `.env` thật lên repository.
 - Chỉ dùng key public phù hợp cho client app và cấu hình Firebase Rules đúng cách.
 
 **EN**
+
 - Do not commit real `.env` values.
 - Use only client-safe public keys and configure Firebase rules properly.
 
@@ -136,4 +146,3 @@ npx jest
 
 Hiện chưa khai báo license trong repository.  
 No explicit license is currently declared in this repository.
-

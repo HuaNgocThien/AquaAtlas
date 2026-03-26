@@ -100,10 +100,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: Spacing.xl,
     gap: Spacing.md,
   },
-  guestEmoji: { 
+  guestEmoji: {
     width: 200,
-    height: 200
-   },
+    height: 200,
+  },
   guestTitle: {
     fontSize: Typography.lg,
     fontWeight: Typography.semibold,

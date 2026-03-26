@@ -190,9 +190,9 @@ describe("useAuthStore", () => {
 
       await useAuthStore.getState().login("test@example.com", "pw");
 
-      const setItemCalls = (AsyncStorage.setItem as jest.Mock).mock.calls.filter(
-        (call) => call[0] === "auth-storage",
-      );
+      const setItemCalls = (
+        AsyncStorage.setItem as jest.Mock
+      ).mock.calls.filter((call) => call[0] === "auth-storage");
       expect(setItemCalls.length).toBeGreaterThan(0);
 
       const lastPayload = setItemCalls[setItemCalls.length - 1][1];
