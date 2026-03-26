@@ -2,7 +2,6 @@ import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { signIn, signUp, AuthUser, updateProfile } from "@/services/firebase";
-import { isLoading } from "expo-font";
 
 interface AuthState {
   user: AuthUser | null;
