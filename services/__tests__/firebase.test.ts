@@ -1,6 +1,7 @@
 const BASE_URL = "https://identitytoolkit.googleapis.com/v1/accounts";
 
 jest.mock("expo/virtual/env", () => ({ env: process.env }));
+process.env.EXPO_PUBLIC_FIREBASE_API_KEY ??= "test-api-key";
 
 import { signIn, signUp, updateProfile } from "../firebase";
 

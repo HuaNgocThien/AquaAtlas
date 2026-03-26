@@ -1,5 +1,14 @@
-const API_KEY = process.env.EXPO_PUBLIC_FIREBASE_API_KEY;
 const BASE_URL = "https://identitytoolkit.googleapis.com/v1/accounts";
+
+function getApiKey(): string {
+  const apiKey = process.env.EXPO_PUBLIC_FIREBASE_API_KEY;
+  if (!apiKey) {
+    throw new Error(
+      "Missing EXPO_PUBLIC_FIREBASE_API_KEY. Set it in your .env file.",
+    );
+  }
+  return apiKey;
+}
 
 export interface AuthUser {
   uid: string;
@@ -19,7 +28,7 @@ export async function signUp(
   email: string,
   password: string,
 ): Promise<AuthUser> {
-  const res = await fetch(`${BASE_URL}:signUp?key=${API_KEY}`, {
+  const res = await fetch(`${BASE_URL}:signUp?key=${getApiKey()}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password, returnSecureToken: true }),
@@ -41,7 +50,7 @@ export async function signIn(
   email: string,
   password: string,
 ): Promise<AuthUser> {
-  const res = await fetch(`${BASE_URL}:signInWithPassword?key=${API_KEY}`, {
+  const res = await fetch(`${BASE_URL}:signInWithPassword?key=${getApiKey()}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password, returnSecureToken: true }),
@@ -67,7 +76,7 @@ export async function updateProfile(
   idToken: string,
   displayName: string,
 ): Promise<void> {
-  const res = await fetch(`${BASE_URL}:update?key=${API_KEY}`, {
+  const res = await fetch(`${BASE_URL}:update?key=${getApiKey()}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ idToken, displayName, returnSecureToken: false }),
