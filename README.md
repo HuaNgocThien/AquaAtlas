@@ -16,14 +16,14 @@ A mobile aquarium reference app (fish, plants, tanks) built with Expo + React Na
 - The codebase follows a layered structure with `app` (routing), `components` (UI), `store` (state), `services` (API), and `data` (static JSON).
 
 ## Ảnh chụp app | Screenshots.
-![Màn hình chính](./assets/screenshots/Screenshot_Home.jpg)
-![Chi tiết cá](./assets/screenshots/Screenshot_DetailFish.jpg)
-![Chi tiết cây](./assets/screenshots/Screenshot_DetailPlant.jpg)
-![Quản lý hồ cá](./assets/screenshots/Screenshot_MyTank.jpg)
-![Tìm kiếm](./assets/screenshots/Screenshot_SearchAll.jpg)
+<img src="./assets/screenshots/Screenshot_Home.jpg" width="300" />
+<img src="./assets/screenshots/Screenshot_DetailFish.jpg" width="300" />
+<img src="./assets/screenshots/Screenshot_DetailPlant.jpg" width="300" />
+<img src="./assets/screenshots/Screenshot_MyTank.jpg" width="300" />
+<img src="./assets/screenshots/Screenshot_SearchAll.jpg" width="300" />
 
 ## Video Demo
-<video src="https://youtube.com/shorts/jDS7ZdB3LzA" width="300" controls></video>
+- Link video: https://youtube.com/shorts/jDS7ZdB3LzA
 
 ## 2) Công nghệ chính | Tech Stack
 
