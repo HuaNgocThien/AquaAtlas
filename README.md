@@ -15,6 +15,16 @@ A mobile aquarium reference app (fish, plants, tanks) built with Expo + React Na
 - AquaAtlas helps users browse fish and aquatic plants, save bookmarks, and manage personal tanks.
 - The codebase follows a layered structure with `app` (routing), `components` (UI), `store` (state), `services` (API), and `data` (static JSON).
 
+## Ảnh chụp app | Screenshots.
+![Màn hình chính](./assets/screenshots/Screenshot_Home.jpg)
+![Chi tiết cá](./assets/screenshots/Screenshot_DetailFish.jpg)
+![Chi tiết cây](./assets/screenshots/Screenshot_DetailPlant.jpg)
+![Quản lý hồ cá](./assets/screenshots/Screenshot_MyTank.jpg)
+![Tìm kiếm](./assets/screenshots/Screenshot_SearchAll.jpg)
+
+## Video Demo
+<video src="https://youtube.com/shorts/jDS7ZdB3LzA" width="300" controls></video>
+
 ## 2) Công nghệ chính | Tech Stack
 
 - Expo SDK 55
