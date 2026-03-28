@@ -23,7 +23,7 @@ A mobile aquarium reference app (fish, plants, tanks) built with Expo + React Na
 ![Tìm kiếm](./assets/screenshots/Screenshot_SearchAll.jpg)
 
 ## Video Demo
-<video src="https://youtube.com/shorts/jDS7ZdB3LzA" width="300" controls></video>
+https://youtube.com/shorts/jDS7ZdB3LzA
 
 ## 2) Công nghệ chính | Tech Stack
 
