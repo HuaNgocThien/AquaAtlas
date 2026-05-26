@@ -14,6 +14,15 @@ A mobile aquarium reference app (fish, plants, tanks) built with Expo + React Na
 
 - AquaAtlas helps users browse fish and aquatic plants, save bookmarks, and manage personal tanks.
 - The codebase follows a layered structure with `app` (routing), `components` (UI), `store` (state), `services` (API), and `data` (static JSON).
+## Tải ứng dụng | Download App
+
+**VI**
+- **Android (Bản thử nghiệm APK):** [Tải file APK trực tiếp tại đây](https://github.com/HuaNgocThien/AquaAtlas/releases/download/v1.0.0/application-58230247-2c9c-4495-8549-f452cfb44225.apk)
+- *Lưu ý:* Do đây là file APK cài trực tiếp không thông qua Google Play, điện thoại của bạn có thể cảnh báo "Cài đặt từ nguồn không xác định", bạn chỉ cần chọn "Vẫn cài đặt" (Install anyway) là được.
+
+**EN**
+- **Android (Preview APK):** [Download APK directly here](https://github.com/HuaNgocThien/AquaAtlas/releases/download/v1.0.0/application-58230247-2c9c-4495-8549-f452cfb44225.apk)
+- *Note:* Since this is a direct APK installation outside of Google Play, your device might show an "Unknown Sources" warning. Simply tap "Install anyway" to proceed.
 
 ## Ảnh chụp app | Screenshots.
 <img src="./assets/screenshots/Screenshot_Home.jpg" width="300" />
